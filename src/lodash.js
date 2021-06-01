@@ -11,6 +11,7 @@ import {
   Code
 } from '@chakra-ui/react';
 import CodeComponent from './components/Code';
+import TableComponent from './components/Table';
 import AccordionTitle from './components/AccordionTitle';
 import _ from 'lodash';
 
@@ -24,9 +25,22 @@ const Loadash = () => {
           <AccordionTitle title="Array" />
           <AccordionPanel pb={4}>
             {/* chunk */}
-            <Heading fontSize="lg">chunk</Heading>
+            <Heading fontSize="lg" fontSize="lg" color="teal" mb="2">
+              chunk
+            </Heading>
             引数のsizeで指定したサイズに要素を分割した配列を作成します。配列を均等に分割できない場合、最後のチャンクは残りの要素になります。
-            <Box>引数 array: Array size: number, default=1</Box>
+            <Box padding="3" borderWidth="1px" borderRadius="lg" my="5">
+              <TableComponent
+                data={[
+                  { name: 'array', type: 'Array', description: '対象の配列' },
+                  {
+                    name: 'size',
+                    type: 'number',
+                    description: '分割する要素の数。defaultは１'
+                  }
+                ]}
+              />
+            </Box>
             <CodeComponent
               data={`// example
 _.chunk(['a', 'b', 'c', 'd', 'e']);

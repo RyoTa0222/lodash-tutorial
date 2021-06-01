@@ -10,51 +10,32 @@ import {
   Box,
   Code
 } from '@chakra-ui/react';
-import Editor from "react-simple-code-editor";
+import CodeComponent from './components/Code';
 import AccordionTitle from './components/AccordionTitle';
-import { highlight, languages } from "prismjs/components/prism-core";
-import "prismjs/components/prism-clike";
-import "prismjs/components/prism-javascript";
-import "prismjs/themes/prism.css"; //Example style, you can use another
-import _ from "lodash"
+import _ from 'lodash';
 
 const Loadash = () => {
   const test = _.chunk(['a', 'b', 'c', 'd', 'e'], 3);
-  console.log(test)
-  const [code, setCode] = React.useState(`// example
-_.chunk(['a', 'b', 'c', 'd', 'e']);
-> [['a'], ['b'], ['c'], ['d'], ['e']]
-_.chunk(['a', 'b', 'c', 'd', 'e'], 2);
-> [['a', 'b'], ['c', 'd'], ['e']]
-_.chunk(['a', 'b', 'c', 'd', 'e'], 3);
-> [['a', 'b', 'c'], ['d', 'e']]`);
+  console.log(test);
   return (
     <Container>
       <Accordion defaultIndex={[0]} mt="4" allowMultiple>
         <AccordionItem>
           <AccordionTitle title="Array" />
           <AccordionPanel pb={4}>
-          {/* chunk */}
+            {/* chunk */}
             <Heading fontSize="lg">chunk</Heading>
             引数のsizeで指定したサイズに要素を分割した配列を作成します。配列を均等に分割できない場合、最後のチャンクは残りの要素になります。
-            <Box>
-              引数
-              array: Array
-              size: number, default=1
-            </Box>
-            <Code colorScheme="blackAlpha" width="100%">
-              <Editor
-                value={code}
-                onValueChange={(code) => setCode(code)}
-                highlight={(code) => highlight(code, languages.js)}
-                padding={10}
-                style={{
-                  fontWeight: 'bold',
-                  fontSize: 12,
-                  width: '100%'
-                }}
-              />
-            </Code>
+            <Box>引数 array: Array size: number, default=1</Box>
+            <CodeComponent
+              data={`// example
+_.chunk(['a', 'b', 'c', 'd', 'e']);
+> [['a'], ['b'], ['c'], ['d'], ['e']]
+_.chunk(['a', 'b', 'c', 'd', 'e'], 2);
+> [['a', 'b'], ['c', 'd'], ['e']]
+_.chunk(['a', 'b', 'c', 'd', 'e'], 3);
+> [['a', 'b', 'c'], ['d', 'e']]`}
+            />
           </AccordionPanel>
         </AccordionItem>
 

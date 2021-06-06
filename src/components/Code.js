@@ -1,10 +1,10 @@
 import React from 'react';
 import { Code, useClipboard, Button } from '@chakra-ui/react';
 import Editor from 'react-simple-code-editor';
-import 'prismjs/components/prism-clike';
-import 'prismjs/components/prism-javascript';
 import 'prismjs/themes/prism.css';
 import { highlight, languages } from 'prismjs/components/prism-core';
+import 'prismjs/components/prism-clike';
+import 'prismjs/components/prism-javascript';
 
 const CodeComponent = ({ data }) => {
   const { hasCopied, onCopy } = useClipboard(data);
